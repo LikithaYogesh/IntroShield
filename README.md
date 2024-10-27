@@ -1,4 +1,5 @@
 Automated Threat Detection System
+
 Overview
 The Automated Threat Detection System is a network monitoring tool that analyzes network traffic in real-time to detect anomalies and suspicious activities. It leverages machine learning techniques, specifically the Isolation Forest algorithm, to identify potential threats. Detected anomalies can be sent to a SIEM (Security Information and Event Management) system like Splunk for further analysis, and suspicious IPs can be blocked using iptables.
 
