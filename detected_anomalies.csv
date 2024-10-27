@@ -1,0 +1,2 @@
+time,src_ip,dst_ip,packet_size,protocol,some_feature,anomaly
+1729937040.0,192.168.1.100,172.16.0.4,2000,TCP,0.9,-1
