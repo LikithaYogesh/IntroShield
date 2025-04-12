@@ -1,4 +1,4 @@
-# IntroShield: Automated Threat Detection System  
+# IntroShield:  Automated Threat Detection System for Real-Time Network Monitoring
 
 **IntroShield** is a powerful network monitoring tool designed to analyze network traffic in real-time and detect anomalies or suspicious activities. It uses machine learning, specifically the Isolation Forest algorithm, to identify potential threats. The system integrates seamlessly with SIEM tools like Splunk for logging and alerting and can automatically block suspicious IPs using `iptables`.  
 
