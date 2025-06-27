@@ -10,7 +10,7 @@
 - **Anomaly Detection:** Leverages the Isolation Forest algorithm from scikit-learn to identify suspicious patterns.  
 - **SIEM Integration:** Supports integration with Splunk for comprehensive logging and alerting.  
 - **Automatic Blocking:** Blocks suspicious IP addresses using `iptables`.  
-- **Data Storage:** Saves detected anomalies in a CSV file for future analysis.  
+- **Anomaly Logging:** Detected anomalies are saved in a CSV file (detected_anomalies.csv) for later review or audit.  
 
 ---
 
@@ -32,31 +32,39 @@ You can install all dependencies by running:
        pip install scapy pandas requests scikit-learn matplotlib  
 ---
 
-##Configuration
+## Configuration
 
-1.Splunk Configuration:
-  Update the SPLUNK_URL and SPLUNK_TOKEN variables in the script with your Splunk server URL and HTTP Event Collector (HEC) token.
-2. Network Interface:
-   Set the INTERFACE variable to the network interface you want to monitor (e.g., eth0, wlan0).
-3. Anomaly Contamination Rate:
-   Adjust the CONTAMINATION_RATE variable in the script to define the expected proportion of outliers in the data.
+1. Splunk Integration
+Set the Splunk server URL and token in automated_threat_detection.py:
 
+        SPLUNK_URL = "https://your-splunk-server:8088"
+        SPLUNK_TOKEN = "your-splunk-hec-token"
+   
+3. Network Interface
+Specify the interface to monitor (e.g., eth0, wlan0):
+
+        INTERFACE = "eth0"
+3. Anomaly Sensitivity
+Define the contamination rate (proportion of expected anomalies):
+
+        CONTAMINATION_RATE = 0.01
 ---
 
 ## Usage
 
-1. Start the Threat Detection System:
-   Run the script using Python:
+Step 1: Run the Detection System
+
+    python automated_threat_detection.py
+    
+Step 2: Monitor Alerts
 
 
-       python introsheild.py  
+Real-time alerts are visible in the terminal and sent to Splunk. Anomalies are stored in the detected_anomalies.csv file in the project root.
 
-2. Monitor Alerts:
-   View real-time logs and alerts in your configured Splunk instance.
-   Anomalies are logged in the CSV file named anomalies.csv in the project directory.
+Step 3: Automated IP Blocking
+IPs identified as suspicious are automatically blocked using:
 
-3. IP Blocking:
-   Suspicious IPs detected by the system will be automatically blocked using iptables.
+    sudo iptables -A INPUT -s <ip_address> -j DROP
 
 ---
 
@@ -77,6 +85,7 @@ Contributions to improve IntroShield are welcome! To contribute:
 
 ## License
 This project is licensed under the MIT License.
+© 2025 Likitha Yogesh
 
 ---
 
